@@ -35,7 +35,7 @@ local armorTraitDropdownCallbacks = {
     {name = "Divines", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_DIVINES})},
     {name = "Nirnhoned", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_NIRNHONED})},
     {name = "Intricate", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_INTRICATE, ITEM_TRAIT_TYPE_WEAPON_INTRICATE})},
-    {name = "Ornate", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_ORNATE})},
+    {name = "Ornate", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_ORNATE, ITEM_TRAIT_TYPE_WEAPON_ORNATE})},
 }
 local jewelryTraitDropdownCallbacks = {
     {name = "None", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_NONE})},
