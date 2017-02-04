@@ -84,13 +84,10 @@ local filterInformation = {
 }
 AdvancedFilters_RegisterFilter(filterInformation)
 
-filterInformation.filterType = ITEMFILTERTYPE_ARMOR
-filterInformation.subfilters = {"Shield",}
-AdvancedFilters_RegisterFilter(filterInformation)
-
 filterInformation.submenuName = "Armor Trait"
 filterInformation.callbackTable = armorTraitDropdownCallbacks
-filterInformation.subfilters = {"Body",}
+filterInformation.filterType = ITEMFILTERTYPE_ARMOR
+filterInformation.subfilters = {"Body", "Shield",}
 AdvancedFilters_RegisterFilter(filterInformation)
 
 filterInformation.submenuName = "Jewelry Trait"
