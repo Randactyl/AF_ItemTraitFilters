@@ -1,46 +1,48 @@
-local function GetFilterCallbackForTrait(traitType)
+local function GetFilterCallbackForTrait(traitTypes)
     return function(slot)
         local link = GetItemLink(slot.bagId, slot.slotIndex)
         local itemTraitType = GetItemLinkTraitInfo(link)
 
-        return traitType == itemTraitType
+        for _, traitType in pairs(traitTypes) do
+            if traitType == itemTraitType then return true end
+        end
     end
 end
 
 local weaponTraitDropdownCallbacks = {
-    {name = "None", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_NONE)},
-    {name = "Powered", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_WEAPON_POWERED)},
-    {name = "Charged", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_WEAPON_CHARGED)},
-    {name = "Precise", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_WEAPON_PRECISE)},
-    {name = "Infused", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_WEAPON_INFUSED)},
-    {name = "Defending", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_WEAPON_DEFENDING)},
-    {name = "Training", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_WEAPON_TRAINING)},
-    {name = "Sharpened", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_WEAPON_SHARPENED)},
-    {name = "Weighted", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_WEAPON_WEIGHTED)},
-    {name = "Nirnhoned", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_WEAPON_NIRNHONED)},
-    {name = "Intricate", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_WEAPON_INTRICATE)},
-    {name = "Ornate", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_WEAPON_ORNATE)},
+    {name = "None", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_NONE})},
+    {name = "Powered", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_WEAPON_POWERED})},
+    {name = "Charged", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_WEAPON_CHARGED})},
+    {name = "Precise", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_WEAPON_PRECISE})},
+    {name = "Infused", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_WEAPON_INFUSED})},
+    {name = "Defending", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_WEAPON_DEFENDING})},
+    {name = "Training", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_WEAPON_TRAINING})},
+    {name = "Sharpened", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_WEAPON_SHARPENED})},
+    {name = "Weighted", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_WEAPON_WEIGHTED})},
+    {name = "Nirnhoned", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_WEAPON_NIRNHONED})},
+    {name = "Intricate", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_WEAPON_INTRICATE})},
+    {name = "Ornate", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_WEAPON_ORNATE})},
 }
 local armorTraitDropdownCallbacks = {
-    {name = "None", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_NONE)},
-    {name = "Sturdy", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_ARMOR_STURDY)},
-    {name = "Impenetrable", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_ARMOR_IMPENETRABLE)},
-    {name = "Reinforced", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_ARMOR_REINFORCED)},
-    {name = "Well Fitted", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_ARMOR_WELL_FITTED)},
-    {name = "Training", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_ARMOR_TRAINING)},
-    {name = "Infused", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_ARMOR_INFUSED)},
-    {name = "Exploration", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_ARMOR_EXPLORATION)},
-    {name = "Divines", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_ARMOR_DIVINES)},
-    {name = "Nirnhoned", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_ARMOR_NIRNHONED)},
-    {name = "Intricate", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_ARMOR_INTRICATE)},
-    {name = "Ornate", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_ARMOR_ORNATE)},
+    {name = "None", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_NONE})},
+    {name = "Sturdy", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_STURDY})},
+    {name = "Impenetrable", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_IMPENETRABLE})},
+    {name = "Reinforced", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_REINFORCED})},
+    {name = "Well Fitted", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_WELL_FITTED})},
+    {name = "Training", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_TRAINING})},
+    {name = "Infused", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_INFUSED})},
+    {name = "Exploration", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_EXPLORATION})},
+    {name = "Divines", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_DIVINES})},
+    {name = "Nirnhoned", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_NIRNHONED})},
+    {name = "Intricate", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_INTRICATE, ITEM_TRAIT_TYPE_WEAPON_INTRICATE})},
+    {name = "Ornate", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_ARMOR_ORNATE})},
 }
 local jewelryTraitDropdownCallbacks = {
-    {name = "None", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_NONE)},
-    {name = "Healthy", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_JEWELRY_HEALTHY)},
-    {name = "Arcane", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_JEWELRY_ARCANE)},
-    {name = "Robust", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_JEWELRY_ROBUST)},
-    {name = "Ornate", filterCallback = GetFilterCallbackForTrait(ITEM_TRAIT_TYPE_JEWELRY_ORNATE)},
+    {name = "None", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_NONE})},
+    {name = "Healthy", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_JEWELRY_HEALTHY})},
+    {name = "Arcane", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_JEWELRY_ARCANE})},
+    {name = "Robust", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_JEWELRY_ROBUST})},
+    {name = "Ornate", filterCallback = GetFilterCallbackForTrait({ITEM_TRAIT_TYPE_JEWELRY_ORNATE})},
 }
 
 local strings = {
